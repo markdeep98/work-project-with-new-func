@@ -1,0 +1,12 @@
+<h1>Create question</h1>
+<%= form_for @post do |f| %>
+	 <div class="form-group">
+			<%= f.label :title %><br />
+    	<%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Create question" , class: "btn btn-light"%> <br>
+      <%= link_to "Back", :back, class: "btn btn-primary" %>
+		</div>
+<% end %>

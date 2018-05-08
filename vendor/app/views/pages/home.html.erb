@@ -1,1 +1,15 @@
-<h1>Home</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-10">
+			<% if user_signed_in? %>
+			<div>
+				Questionnaires
+			</div>
+			<% else %>
+			<div>
+				Home
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
