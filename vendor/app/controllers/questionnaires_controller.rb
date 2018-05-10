@@ -29,6 +29,7 @@ class QuestionnairesController < ApplicationController
 	def update
 		if @questionnaire.update_attributes(questionnaire_params)
 			redirect_to questionnaires_url
+			flash[:success] = "Questionnaire update"
 		else
 			render :edit
 		end
