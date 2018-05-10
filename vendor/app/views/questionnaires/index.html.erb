@@ -1,0 +1,34 @@
+<h1>Questionnaires</h1>
+<div class="container">
+	<div class="row">
+		<div class="mx-auto">
+			<%= link_to "Add Questionnaire + ", new_questionnaire_path, class: 'btn btn-primary' %>
+		</div>
+	</div>
+</div>
+<br>
+<table class="table">
+  <thead class="table-borderless">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @questionnaires.each do |questionnaire| %>
+    <tr>
+      <td><%= questionnaire.title %></td>
+      <td><%= questionnaire.status %></td>
+      <td>
+      		<%= link_to "Show", questionnaire_path(questionnaire.id), method: :get %> |
+      		<%= link_to "Edit", edit_questionnaire_path(questionnaire.id) %> |
+       		<%= link_to "Delete", questionnaire_path(questionnaire.id), method: :delete, data: {confirm: "Are you sure?"} %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
