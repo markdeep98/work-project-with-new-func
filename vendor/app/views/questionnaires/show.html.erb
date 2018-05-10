@@ -4,7 +4,7 @@
       <th scope="col">Questionnaire name</th>
       <th scope="col">Prepared by</th>
       <th scope="col">Prepared for</th>
-      <th scope="col">Actions</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
@@ -16,3 +16,15 @@
     </tr>
   </tbody>
 </table>
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <%= link_to "Add question +", new_questionnaire_question_path(@questionnaire.id) ,class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
+<% @question.each do |lol| %>
+<%= lol.title %>
+<% end %>

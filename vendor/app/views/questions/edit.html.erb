@@ -1,0 +1,13 @@
+<h1>Edit question</h1>
+<%= form_for @question do |f| %>
+<!--, url: new_questionnaire_question_path, method: :get -->
+	<div class="form-group">
+		<%= f.label :title %><br />
+    <%= f.text_field :title, class: "form-control" %>
+   </div>
+
+  <div class="actions">
+    <%= f.submit "Editquestion" , class: "btn btn-light"%> <br>
+    <%= link_to "Back", :back, class: "btn btn-primary" %>
+	</div>
+<% end %>

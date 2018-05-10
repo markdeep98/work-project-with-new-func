@@ -7,6 +7,7 @@ class QuestionnairesController < ApplicationController
 
 	def show
 		@questionnaires = Questionnaire.all
+		@question = Question.all
 	end
 
 	def new
@@ -16,7 +17,7 @@ class QuestionnairesController < ApplicationController
 	def create
 		@questionnaire = Questionnaire.new(questionnaire_params)
 		if @questionnaire.save
-			redirect_to questionnaires_url
+			redirect_to questionnaire_url
 			flash[:success] = "Questionnaire create"
 		else
 			render :new
