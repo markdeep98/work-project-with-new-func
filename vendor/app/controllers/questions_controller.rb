@@ -28,8 +28,8 @@ class QuestionsController < ApplicationController
 
 	def update
 		if @question.update_attributes(question_params)
-			redirect_to questionnaire_question_url
-			flash[:success] = "question update"
+			redirect_to root_url
+			flash[:success] = "Question update"
 		else
 			render :edit
 		end
@@ -37,15 +37,15 @@ class QuestionsController < ApplicationController
 
 	def destroy
 		@question.destroy
-		redirect_to questionnaire_question_url
-		flash[:success] = "question delete"
+		redirect_to root_url
+		flash[:success] = "Question delete"
 	end
 
 
 	private 
 
 	def set_question
-		@question = Question.find(params[:id])
+		@question = Question.find_by(params[:id])
 	end
 
 	def question_params

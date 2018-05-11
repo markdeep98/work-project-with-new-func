@@ -7,12 +7,21 @@
       <th scope="col">Status</th>
     </tr>
   </thead>
+  
   <tbody>
     <tr>
-      <td><%= @questionnaire.title %></td>
-      <td></td>
-      <td></td>
-      <td><%= @questionnaire.status %></td>
+      <td>
+        <%= @questionnaire.title %>
+      </td>
+      <td>
+        <%= @user.first_name %> <%= @user.last_name %>     
+      </td> 
+      <td>
+        <%= @user.first_name %> <%= @user.last_name %> 
+      </td>
+      <td>
+        <%= @questionnaire.status %>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -25,6 +34,26 @@
   </div>
 </div>
 
-<% @question.each do |lol| %>
-<%= lol.title %>
-<% end %>
+<br>
+<table class="table">
+  <thead class="table-borderless">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @question.each do |question| %>
+    <tr>
+      <td><%= question.title %></td>
+      <td>
+          <%= link_to "Show", question_path(question.id), method: :get %> |
+          <%= link_to "Edit", edit_question_path(question.id) %> |
+          <%= link_to "Delete", question_path(question.id), method: :delete, data: {confirm: "Are you sure?"} %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

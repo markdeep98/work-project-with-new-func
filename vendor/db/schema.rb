@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510110154) do
+ActiveRecord::Schema.define(version: 20180511075632) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
@@ -21,14 +21,21 @@ ActiveRecord::Schema.define(version: 20180510110154) do
   create_table "questionnaires", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
     t.string "status"
+    t.string "title"
+    t.string "question_id"
+    t.integer "user_id"
+    t.index ["question_id"], name: "index_questionnaires_on_question_id"
+    t.index ["title"], name: "index_questionnaires_on_title"
+    t.index ["user_id"], name: "index_questionnaires_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "questionnaire_id"
+    t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
     t.index ["title"], name: "index_questions_on_title"
   end
 

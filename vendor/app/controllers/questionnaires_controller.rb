@@ -1,5 +1,6 @@
 class QuestionnairesController < ApplicationController
 		before_action :set_questionnaire, only: [:show, :edit, :update, :destroy]
+		before_action :correct_user, only: :destroy
 
 	def index
 		@questionnaires = Questionnaire.all
@@ -8,16 +9,16 @@ class QuestionnairesController < ApplicationController
 	def show
 		@questionnaires = Questionnaire.all
 		@question = Question.all
+		@user = User.find(@questionnaire.user_id)
 	end
-
 	def new
 		@questionnaire = Questionnaire.new
 	end
 
 	def create
-		@questionnaire = Questionnaire.new(questionnaire_params)
+		@questionnaire = current_user.questionnaire.new(questionnaire_params)
 		if @questionnaire.save
-			redirect_to questionnaire_url
+			redirect_to questionnaires_url
 			flash[:success] = "Questionnaire create"
 		else
 			render :new
@@ -52,4 +53,10 @@ class QuestionnairesController < ApplicationController
 	def questionnaire_params
 		params.require(:questionnaire).permit(:title, :status)
 	end
+
+	def correct_user
+		@questionnaire = current_user.questionnaire.find_by(id: params[:id])
+			redirect_to root_url if @questionnaire.nil?			
+	end
+
 end
