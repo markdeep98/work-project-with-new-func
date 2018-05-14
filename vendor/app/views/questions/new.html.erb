@@ -2,12 +2,14 @@
 <%= form_for @question, url: questionnaire_questions_path do |f| %>
 	<div class="form-group">
 		<%= f.label :title %><br />
-    <%= f.text_field :title, class: "form-control" %>
-   </div>
+    	<%= f.text_field :title, class: "form-control" %>
+   	</div>
 
-  <div class="actions">
-    <%= f.submit "Create question" , class: "btn btn-light"%> <br>
-    <%= link_to "Back", :back, class: "btn btn-primary" %>
+   	
+   	
+  	<div class="actions">
+    	<%= f.submit "Create question" , class: "btn btn-light"%> <br>
+    	<%= link_to "Back", :back, class: "btn btn-primary" %>
 	</div>
 <% end %>
 

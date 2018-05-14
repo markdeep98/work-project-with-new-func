@@ -1,6 +1,6 @@
 class QuestionnairesController < ApplicationController
 		before_action :set_questionnaire, only: [:show, :edit, :update, :destroy]
-		before_action :correct_user, only: :destroy
+		before_action :correct_user, only: [:destroy, :edit]
 
 	def index
 		@questionnaires = Questionnaire.all
@@ -56,7 +56,8 @@ class QuestionnairesController < ApplicationController
 
 	def correct_user
 		@questionnaire = current_user.questionnaire.find_by(id: params[:id])
-			redirect_to root_url if @questionnaire.nil?			
+			redirect_to root_url if @questionnaire.nil?
+			flash[:danger] = "Error"		
 	end
 
 end

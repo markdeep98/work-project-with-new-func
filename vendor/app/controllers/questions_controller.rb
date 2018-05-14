@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-	before_action :set_question, only: [:show, :edit, :update, :destroy]
+
+	before_action :questionnaire_param
 
 	def index
 		@questions = Question.all
@@ -14,7 +15,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
-		@question = Question.new(question_params)
+		@question = @questionnaire.questions.create(question_params)
 		if @question.save
 			redirect_to root_url
 			flash[:success] = "Question create"
@@ -44,11 +45,16 @@ class QuestionsController < ApplicationController
 
 	private 
 
-	def set_question
-		@question = Question.find_by(params[:id])
+	def questionnaire_param
+		@questionnaire = Questionnaire.find(params[:questionnaire_id])
+	end
+
+	def set_user
+		@user = User.find(params[:user_id])
 	end
 
 	def question_params
 		params.require(:question).permit(:title)
 	end
+
 end
