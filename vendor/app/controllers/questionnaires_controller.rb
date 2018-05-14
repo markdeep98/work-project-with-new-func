@@ -11,6 +11,7 @@ class QuestionnairesController < ApplicationController
 		@question = Question.all
 		@user = User.find(@questionnaire.user_id)
 	end
+	
 	def new
 		@questionnaire = Questionnaire.new
 	end
@@ -56,8 +57,7 @@ class QuestionnairesController < ApplicationController
 
 	def correct_user
 		@questionnaire = current_user.questionnaire.find_by(id: params[:id])
-			redirect_to root_url if @questionnaire.nil?
-			flash[:danger] = "Error"		
+			redirect_to root_url if @questionnaire.nil?		
 	end
 
 end

@@ -3,23 +3,30 @@
       <%= link_to "VendorTrust", root_path, class: "vendor nav-link" %>
       <ul class="nav justify-content-end"> 
         <% if user_signed_in? %>
-          <li class="nav-item edit">
-          <i class="fas fa-user "></i>
-          <%= link_to "Edit profile", edit_user_registration_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item signout">
-          <i class="fas fa-sign-out-alt"></i>
-             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
-          </li>
+          <% if current_user.first_name && current_user.last_name == nil? %>
+            <li class="nav-item edit">
+              <i class="fas fa-user "></i>
+              <%= link_to "Edit profile", edit_user_registration_path, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item edit">
+              <i class="fas fa-user "></i>
+              <%= link_to current_user.first_name, edit_user_registration_path, class: "nav-link" %>
+            </li>
+          <% end %>
+            <li class="nav-item signout">
+            <i class="fas fa-sign-out-alt"></i>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
         <% else %>
-        <li class="nav-item signup">
-        <i class="fas fa-user "></i>
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item login">
-        <i class="fas fa-sign-in-alt"></i>
-          <%= link_to "Login", new_user_session_path, class: "nav-link"%>
-        </li> 
+            <li class="nav-item signup">
+            <i class="fas fa-user "></i>
+              <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item login">
+            <i class="fas fa-sign-in-alt"></i>
+              <%= link_to "Login", new_user_session_path, class: "nav-link"%>
+            </li> 
         <% end %>
       </ul>
   </div>
