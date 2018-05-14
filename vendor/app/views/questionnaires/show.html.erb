@@ -43,19 +43,29 @@
       <th scope="col">Actions</th>
     </tr>
   </thead>
-  <tbody>
-  <% @question.each do |question| %>
-  <% if @questionnaire.id == question.questionnaire_id %>
-    <tr>
-      <td><%= question.title %></td>
-      <td>
-          <%= link_to "Show", question_path(question.id), method: :get %> |
-          <%= link_to "Edit", edit_question_path(question.id) %> |
-          <%= link_to "Delete", question_path(question.id), method: :delete, data: {confirm: "Are you sure?"} %>
-      </td>
-    </tr>
-    <% end %>
-    <% end %>
+  <% if @question == "" %>
+    <div class="contailner">
+      <div class="row">
+        <div class="col-sm-12 mx-auto">
+          <div>You don't have any questions yet.</div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <tbody>
+      <% @question.each do |question| %>
+        <% if @questionnaire.id == question.questionnaire_id %>
+          <tr>
+            <td><%= question.title %></td>
+            <td>
+                <%= link_to "Show", question_path(question.id), method: :get %> |
+                <%= link_to "Edit", edit_question_path(question.id) %> |
+                <%= link_to "Delete", question_path(question.id), method: :delete, data: {confirm: "Are you sure?"} %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+  <% end %>
   </tbody>
 </table>
 
