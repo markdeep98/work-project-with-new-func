@@ -41,8 +41,7 @@ class QuestionsController < ApplicationController
 		flash[:success] = "Question delete"
 	end
 
-
-	private 
+	private
 
 	def set_question
 		@question = Question.find(params[:id])

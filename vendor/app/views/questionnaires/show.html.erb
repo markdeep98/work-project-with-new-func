@@ -29,7 +29,7 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto">
-      <%= link_to "To questionnaires", :back ,class: 'btn btn-primary' %>
+      <%= link_to "To questionnaires", questionnaires_path ,class: 'btn btn-primary' %>
       <%= link_to "Add question +", new_questionnaire_question_path(@questionnaire.id) ,class: 'btn btn-primary' %>
     </div>
   </div>
@@ -43,30 +43,30 @@
       <th scope="col">Actions</th>
     </tr>
   </thead>
-  <% if @question == "" %>
-    <div class="contailner">
-      <div class="row">
-        <div class="col-sm-12 mx-auto">
-          <div>You don't have any questions yet.</div>
-        </div>
-      </div>
-    </div>
-  <% else %>
-    <tbody>
-      <% @question.each do |question| %>
-        <% if @questionnaire.id == question.questionnaire_id %>
-          <tr>
-            <td><%= question.title %></td>
-            <td>
-                <%= link_to "Show", question_path(question.id), method: :get %> |
-                <%= link_to "Edit", edit_question_path(question.id) %> |
-                <%= link_to "Delete", question_path(question.id), method: :delete, data: {confirm: "Are you sure?"} %>
-            </td>
-          </tr>
-        <% end %>
-      <% end %>
+    <% if @questionnaire.questions.any?%>
+      <tbody>
+        <% @question.each do |question| %>
+            <% if @questionnaire.id == question.questionnaire_id %>
+                  <tr>
+                    <td><%= question.title %></td>
+                      <td>
+                          <%= link_to "Show", question_path(question.id), method: :get %> |
+                          <%= link_to "Edit", edit_question_path(question.id) %> |
+                          <%= link_to "Delete", question_path(question.id), method: :delete, data: {confirm: "Are you sure?"} %>
+                      </td>
+                  </tr>
+            <% end %>
+        <% end %> 
+        </tbody>
+    <% else %>
+      <tbody>
+        <tr>
+          <td colspan = "2" class = "text-center">
+            You don't have any questions yet. 
+          </td>
+        </tr>
+      </tbody>
   <% end %>
-  </tbody>
 </table>
 
 
