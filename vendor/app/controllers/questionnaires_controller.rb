@@ -57,7 +57,7 @@ class QuestionnairesController < ApplicationController
 
 	def correct_user
 		@questionnaire = current_user.questionnaire.find_by(id: params[:id])
-			redirect_to root_url if @questionnaire.nil?		
+		redirect_to root_url if @questionnaire.nil?	
 	end
 
 end
