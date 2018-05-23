@@ -5,11 +5,11 @@ class QuestionsController < ApplicationController
   def index; end
 
   def show
-    @questions = Question.all
+    @questions = question_method.all
   end
 
   def new
-    @question = Question.new
+    @question = question_method.new
   end
 
   def create
@@ -41,8 +41,12 @@ class QuestionsController < ApplicationController
 
   private
 
+  def question_method
+    Question
+  end
+  
   def set_question
-    @question = Question.find(params[:id])
+    @question = question_method.find(params[:id])
   end
 
   def questionnaire_param

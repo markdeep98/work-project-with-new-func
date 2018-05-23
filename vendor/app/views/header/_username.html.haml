@@ -1,6 +1,0 @@
-%li.nav-item.edit
-  %i.fas.fa-user
-  = link_to 'Hi, ' + current_user.first_name.to_s + ' ' + current_user.last_name.to_s, edit_user_registration_path, class: "nav-link"
-%li.nav-item.signout
-  %i.fas.fa-sign-out-alt
-  = link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"

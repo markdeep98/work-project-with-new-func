@@ -1,17 +1,2 @@
 <h1>Edit questionnaire</h1>
-<%= form_for @questionnaire do |f| %>
-	<div class="form-group">
-		<%= f.label :title %><br />
-    	<%= f.text_field :title, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-		<%= f.label :status %><br />
-    	<%= f.text_field :status, class: "form-control" %>
-    </div>
-
-    <div class="actions">
-      	<%= f.submit "Update questionnaire" , class: "btn btn-light"%> <br>
-      	<%= link_to "Back", :back, class: "btn btn-primary" %>
-	</div>
-<% end %>
+<%= render 'form', plain: "Edit questionnaire" %>

@@ -1,19 +1,18 @@
 class QuestionnairesController < ApplicationController
   before_action :set_questionnaire, only: %i[show edit update destroy]
   before_action :correct_user, only: %i[destroy edit]
+  before_action :all_questionnaires, only: %i[index show]
 
   def index
-    @questionnaires = Questionnaire.all
   end
 
   def show
-    @questionnaires = Questionnaire.all
     @question = Question.all
     @user = User.find(@questionnaire.user_id)
   end
 
   def new
-    @questionnaire = Questionnaire.new
+    @questionnaire = quest.new
   end
 
   def create
@@ -45,8 +44,16 @@ class QuestionnairesController < ApplicationController
 
   private
 
+  def all_questionnaires
+    @questionnaires = quest.all
+  end
+
+  def quest
+    Questionnaire
+  end
+
   def set_questionnaire
-    @questionnaire = Questionnaire.find(params[:id])
+    @questionnaire = quest.find(params[:id])
   end
 
   def questionnaire_params

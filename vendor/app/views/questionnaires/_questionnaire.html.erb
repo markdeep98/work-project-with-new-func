@@ -1,0 +1,13 @@
+<tbody>
+    <tr>
+      <td><%= questionnaire.title %></td>
+      <td><%= questionnaire.status %></td>
+      <td>
+        <%= link_to "Show", questionnaire_path(questionnaire), method: :get %>
+        <% if current_user.id == questionnaire.user_id %> |
+        	<%= link_to "Edit", edit_questionnaire_path(questionnaire) %> |
+         	<%= link_to "Delete", questionnaire_path(questionnaire), method: :delete, data: {confirm: "Are you sure?"} %>
+        <% end %>
+      </td>
+    </tr>
+</tbody>

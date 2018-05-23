@@ -1,6 +1,6 @@
 %li.nav-item.edit
   %i.fas.fa-user
-  = link_to "Edit profile", edit_user_registration_path, class: "nav-link"
+  = link_to @header_text, edit_user_registration_path, class: "nav-link"
 %li.nav-item.signout
   %i.fas.fa-sign-out-alt
   = link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"

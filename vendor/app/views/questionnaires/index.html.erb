@@ -22,19 +22,7 @@
       <th scope="col">Actions</th>
     </tr>
   </thead>
-  <tbody>
-  <% @questionnaires.each do |questionnaire| %>
-    <tr>
-      <td><%= questionnaire.title %></td>
-      <td><%= questionnaire.status %></td>
-      <td>
-      		<%= link_to "Show", questionnaire_path(questionnaire.id), method: :get %> |
-      		<%= link_to "Edit", edit_questionnaire_path(questionnaire.id) %> |
-       		<%= link_to "Delete", questionnaire_path(questionnaire.id), method: :delete, data: {confirm: "Are you sure?"} %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
+  <%= render partial: 'questionnaire', collection: @questionnaires %>
 </table>
 
 
