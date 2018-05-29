@@ -43,18 +43,20 @@
       <th scope="col">Actions</th>
     </tr>
   </thead>
-    <% if @questionnaire.questions.any?%>
+    <% if @questionnaire.question.any?%>
       <tbody>
         <% @question.each do |question| %>
             <% if @questionnaire.id == question.questionnaire_id %>
                   <tr>
                     <td><%= question.title %></td>
                       <td>
-                          <%= link_to "Show", question_path(question), method: :get %> |
+                          <%= link_to "Show", question_path(question), method: :get %>
+                            <% if question.user_id == current_user.id %>|
                           <%= link_to "Edit", edit_question_path(question) %> |
                           <%= link_to "Delete", question_path(question), method: :delete, data: {confirm: "Are you sure?"} %>
                       </td>
                   </tr>
+            <% end %>
             <% end %>
         <% end %> 
         </tbody>

@@ -25,7 +25,12 @@ class QuestionnairesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    if @questionnaire.user_id != current_user.id
+      redirect_to root_url
+      flash[:danger] = 'Error'
+    end
+  end
 
   def update
     if @questionnaire.update_attributes(questionnaire_params)

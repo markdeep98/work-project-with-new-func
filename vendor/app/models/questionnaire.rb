@@ -1,6 +1,6 @@
 class Questionnaire < ApplicationRecord
-  belongs_to :user
-  has_many :questions, dependent: :destroy
-  validates :title, presence: true
-  validates :status, presence: true
+	has_many :question, dependent: :destroy
+	belongs_to :user
+  validates :title, presence: true, length: {minimum: 5}
+  validates :status, presence: true, length: {minimum: 5}
 end

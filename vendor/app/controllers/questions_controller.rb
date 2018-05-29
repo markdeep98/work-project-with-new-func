@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = @questionnaire.questions.create(question_params)
+    @question = @questionnaire.question.new(question_params)
     if @question.save
       redirect_to questionnaire_path(@questionnaire.id)
       flash[:success] = 'Question create'
@@ -22,7 +22,12 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    if @question.user_id != current_user.id
+      redirect_to root_url
+      flash[:danger] = 'Error'
+    end
+  end
 
   def update
     if @question.update_attributes(question_params)
@@ -54,6 +59,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title)
+    params.require(:question).permit(:title).merge(user_id: current_user.id)
   end
 end
