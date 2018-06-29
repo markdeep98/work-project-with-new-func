@@ -43,12 +43,10 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'factory_bot_rails'
 end
 
-group :test do
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
-end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -64,3 +62,6 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'rubocop', require: false
+
+gem 'omniauth'
+gem 'omniauth-facebook'

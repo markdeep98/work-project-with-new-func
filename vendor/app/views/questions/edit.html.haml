@@ -1,0 +1,10 @@
+%h1 Edit question
+= form_for @question do |f|
+  .form-group
+    = f.label :title
+    %br/
+    = f.text_field :title, class: "form-control"
+  .actions
+    = f.submit "Edit question" , class: "btn btn-light"
+    %br/
+    = link_to "Back", :back, class: "btn btn-primary"

@@ -1,0 +1,33 @@
+%table.table
+  %thead.table-borderless
+    %tr
+      %th{scope: "col"} Questionnaire name
+      %th{scope: "col"} Prepared by
+      %th{scope: "col"} Prepared for
+      %th{scope: "col"} Status
+  %tbody
+    %tr
+      %td
+        = @questionnaire.title
+      %td
+        = @user.first_name
+        = @user.last_name
+      %td
+        = @user.first_name
+        = @user.last_name
+      %td
+        = @questionnaire.status
+.container
+  .row
+    .mx-auto
+      = link_to "To questionnaires", questionnaires_path ,class: 'btn btn-primary'
+      = link_to "Add question +", new_questionnaire_question_path(@questionnaire.id) ,class: 'btn btn-primary'
+%br/
+%table.table
+  %thead.table-borderless
+    %tr
+      %th{scope: "col"} Title
+      %th{scope: "col"} Actions
+  = render 'questionnaires/question_form'
+
+

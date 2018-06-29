@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-sm-6
+      %h2 Questionnaires
+.container
+  .row
+    .mx-auto
+      = link_to "Add Questionnaire", new_questionnaire_path, class: 'btn btn-primary'
+%br/
+%table.table
+  %thead.table-borderless
+    %tr
+      %th{scope: "col"} Title
+      %th{scope: "col"} Status
+      %th{scope: "col"} Actions
+  = render partial: 'questionnaire', collection: @questionnaires
+

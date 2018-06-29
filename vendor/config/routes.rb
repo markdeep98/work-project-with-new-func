@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+  namespace :users do
+    get 'omniauth_callbacks/facebook'
+  end
+
+  devise_for :users, controllers: { registrations: 'registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
 
   authenticated :user do
     root 'questionnaires#index', as: :authenticated_root

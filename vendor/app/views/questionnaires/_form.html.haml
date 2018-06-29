@@ -1,0 +1,13 @@
+= form_with(model: @questionnaire, local: true) do |f|
+  .form-group
+    = f.label :title
+    %br/
+    = f.text_field :title, class: "form-control"
+  .form-group
+    = f.label :status
+    %br/
+    = f.text_field :status, class: "form-control"
+  .actions
+    = f.submit plain , class: "btn btn-light"
+    %br/
+    = link_to "Back", :back, class: "btn btn-primary"
